@@ -41,7 +41,7 @@ proxy-providers:
 # 全局UA
 # global-ua: clash.meta
 
-# 手动信息
+# 节点信息
 proxies:
   - {name: 直连, type: direct, udp: true}
   - {name: 拒绝, type: reject}
