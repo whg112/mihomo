@@ -152,7 +152,7 @@ proxy-groups:
   - {name: 🪟 Microsoft, <<: *pr}
   - {name: 🎵 TikTok, <<: *pr}
   - {name: 📲 Telegram, <<: *pr}
-  - {name: 🎥 NETFLIX, type: select, proxies: [🚀 默认代理, 🎥 奈飞自动, 🎥 奈飞手动]}
+  - {name: 🎥 NETFLIX, type: select, proxies: [🚀 默认代理, ♻️ 香港自动, ♻️ 日本自动, ♻️ 加坡自动, 🎥 奈飞自动, 🇭🇰 香港手动, 🇯🇵 日本手动, 🇸🇬 加坡手动, 🎥 奈飞手动]}
   - {name: ✈️ Speedtest, <<: *pr}
   - {name: 💶 PayPal, <<: *pr}
   - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
