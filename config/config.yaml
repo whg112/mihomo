@@ -1,8 +1,8 @@
 # 注意规则在满足自己需求情况下，尽量做到精简，不要过度复杂，以免影响性能。
 # 机场订阅
 proxy-providers:
-  机场一名称:
-    url: "机场一订阅地址"
+  Airport1:
+    url: "机场订阅"
     type: http
     # 更新间隔时间（秒）86400为24小时
     interval: 86400
@@ -37,13 +37,13 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: ♻️ 香港自动
+    proxy: 🚀 默认代理
 # 全局UA
 # global-ua: clash.meta
 
 # 节点信息
 proxies:
-  - {name: 直连, type: direct, udp: true}
+  - {name: 直连, type: direct}
   - {name: 拒绝, type: reject}
 
 # 全局配置 
@@ -71,33 +71,17 @@ find-process-mode: 'off'
 # 全局指纹，伪装浏览器指纹
 global-client-fingerprint: chrome
 # 移动设备省电相关
-disable-keep-alive: false
 keep-alive-idle: 600
 keep-alive-interval: 15
+disable-keep-alive: false
 profile:
   # 手动缓存
   store-selected: true
   # fake-ip缓存
   store-fake-ip: true
 
-#数据库
-# 数据库加载类型，memconservative小内存，standard标准内存
-# geodata-loader: memconservative/standard
-# geoip数据库格式，true为dat格式，false为MDB格式
-# geodata-mode: true/false
-# 是否开启自动更新
-# geo-auto-update: false
-# 更新间隔时间（小时）
-# geo-update-interval: 24
-# 数据库下载链接
-# geox-url:
-	# geoip: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
-	# geosite: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
-	# mmdb: "https://mirror.ghproxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
-	# asn: "https://mirror.ghproxy.com/https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
-
 # 控制面板
-# IP和端口
+# 面板IP和端口
 external-controller: 0.0.0.0:9090
 # 登录面板密码
 secret: ""
@@ -172,11 +156,11 @@ dns:
     - "+.ntp.ntsc.ac.cn"
     - "+.cn.ntp.org.cn"
   # 默认DNS服务器，帮助下面域名的DNS服务器做域名解析，不能使用域名的DNS服务器
-  # default-nameserver:
-    # - 223.5.5.5
+  default-nameserver:
+    - 223.5.5.5
   # 代理服务器的DNS解析，设置国内的DNS服务器。只是解析手动里的服务器域名
-  # proxy-server-nameserver:
-    # - https://223.5.5.5/dns-query
+  proxy-server-nameserver:
+    - https://223.5.5.5/dns-query
   # namesever尽量用运营商提供的DNS，必须的
   nameserver:
     - 223.5.5.5
@@ -184,9 +168,9 @@ dns:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🔯 香港故转, 🔯 台湾故转, 🔯 日本故转, 🔯 加坡故转, 🔯 韩国故转, 🔯 美国故转, 🇭🇰 香港手动, 🇹🇼 台湾手动, 🇯🇵 日本手动, 🇸🇬 加坡手动, 🇰🇷 韩国手动, 🇺🇲 美国手动, 🌐 全部手动, 直连]}
+pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, ♻️ 所有自动, 🌐 手动切换, 直连, 拒绝]}
 proxy-groups:
-  - {name: 🚀 默认代理, type: select, proxies: [♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🔯 香港故转, 🔯 台湾故转, 🔯 日本故转, 🔯 加坡故转, 🔯 韩国故转, 🔯 美国故转, 🇭🇰 香港手动, 🇹🇼 台湾手动, 🇯🇵 日本手动, 🇸🇬 加坡手动, 🇰🇷 韩国手动, 🇺🇲 美国手动, 🌐 全部手动, 直连]}
+  - {name: 🚀 默认代理, type: select, proxies: [♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🌐 手动切换, 直连, 拒绝]}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
   - {name: 🤖 ChatGPT, <<: *pr}
@@ -195,51 +179,36 @@ proxy-groups:
   - {name: 🪟 Microsoft, <<: *pr}
   - {name: 🎵 TikTok, <<: *pr}
   - {name: 📲 Telegram, <<: *pr}
-  - {name: 🎥 NETFLIX, type: select, proxies: [🚀 默认代理, ♻️ 香港自动, ♻️ 日本自动, ♻️ 加坡自动, 🎥 奈飞自动, 🇭🇰 香港手动, 🇯🇵 日本手动, 🇸🇬 加坡手动, 🎥 奈飞手动]}
-  - {name: ✈️ Speedtest, <<: *pr}
+  # - {name: 🎥 NETFLIX, <<: *pr}
+  - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 加坡自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 美国自动, ♻️ 香港自动, 🎥 奈飞自动, 🚀 默认代理, 🎥 奈飞手动, 🌐 全部手动, 拒绝]}
+  # - {name: ✈️ Speedtest, <<: *pr}
+  - {name: ✈️ Speedtest, type: select, proxies: [🎯 直连, 🚀 默认代理, ♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🌐 全部手动, 拒绝]}
   - {name: 💶 PayPal, <<: *pr}
-  - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理]}
-  - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理]}
+  - {name: 🍎 Apple, type: select, proxies: [直连, 🚀 默认代理, 拒绝]}
+  - {name: 🎯 直连, type: select, proxies: [直连, 🚀 默认代理, 拒绝]}
   - {name: 🐟 漏网之鱼, <<: *pr}
-
-  - {name: 🇭🇰 香港手动, type: select, include-all: true, filter: "(?i)(?=.*(广港|香港|HK|Hong Kong|🇭🇰|HongKong))^((?!(家宽|游戏|剩余|流量|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x)).)*$"}
-  - {name: 🇹🇼 台湾手动, type: select, include-all: true, filter: "(?i)(?=.*(广台|台湾|台灣|TW|Tai Wan|🇹🇼|TaiWan))^((?!(家宽|游戏|剩余|流量|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x)).)*$"}
-  - {name: 🇯🇵 日本手动, type: select, include-all: true, filter: "(?i)(?=.*(广日|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|🇯🇵|Japan))^((?!(家宽|游戏|剩余|流量|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x)).)*$"}
-  - {name: 🇸🇬 加坡手动, type: select, include-all: true, filter: "(?i)(?=.*(广新|新加坡|坡|狮城|SG|🇸🇬|Singapore))^((?!(家宽|游戏|剩余|流量|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x)).)*$"}
-  - {name: 🇰🇷 韩国手动, type: select, include-all: true, filter: "(?i)(?=.*(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea))^((?!(家宽|游戏|剩余|流量|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x)).)*$"}
-  - {name: 🇺🇲 美国手动, type: select, include-all: true, filter: "(?i)(?=.*(广美|美|纽约|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|🇺🇸|United States))^((?!(家宽|游戏|剩余|流量|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x)).)*$"}
-  - {name: 🌐 全部手动, type: select, include-all: true}
-
-  - {name: 🔯 香港故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广港|香港|HK|Hong Kong|🇭🇰|HongKong))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
-  - {name: 🔯 台湾故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广台|台湾|台灣|TW|Tai Wan|🇹🇼|TaiWan))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
-  - {name: 🔯 日本故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?=.*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
-  - {name: 🔯 加坡故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广新|新加坡|坡|狮城|SG|🇸🇬|Singapore))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
-  - {name: 🔯 韩国故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
-  - {name: 🔯 美国故转, type: fallback, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广美|美|纽约|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|🇺🇸|United States))^((?!(游戏|剩余|流量|0.5|0.5倍|0.5x|10.0|10倍|10x|20.0|20倍|20x)).)*$"}
-  - {name: 🔯 全部故转, type: select, include-all: true, tolerance: 20, interval: 300}
-
+  
+  - {name: 🌐 手动切换, type: select, include-all: true}
+  - {name: ♻️ 所有自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^(?!.*直连).*$"}
   - {name: ♻️ 香港自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广港|香港|HK|Hong Kong|🇭🇰|HongKong))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 台湾自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广台|台湾|台灣|TW|Tai Wan|🇹🇼|TaiWan))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 日本自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 加坡自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广新|新加坡|坡|狮城|SG|🇸🇬|Singapore))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广美|美|纽约|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|🇺🇸|United States))^((?!(游戏|剩余|流量|0.5|0.5倍|0.5x|10.0|10倍|10x|20.0|20倍|20x)).)*$"}
-  - {name: ♻️ 所有自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "^((?!(直连)).)*$"}
-
   - {name: 🎥 奈飞自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(NF|奈飞|解锁|Netflix|NETFLIX|Media))"}
   - {name: 🎥 奈飞手动, type: select, include-all: true, filter: "(?i)(?=.*(NF|奈飞|解锁|Netflix|NETFLIX|Media))"}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
+  - DOMAIN-SUFFIX,221636.xyz,🎯 直连
+  - DOMAIN-SUFFIX,wanghglc.top,🎯 直连
+  - DOMAIN-SUFFIX,4770113.xyz,🎯 直连
+  - DOMAIN-SUFFIX,njxyj.cn,🎯 直连
+  - DOMAIN-SUFFIX,erp321.com,🎯 直连
   - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
-  - DOMAIN-SUFFIX,221636.xyz,直连
-  - DOMAIN-SUFFIX,wanghglc.top,直连
-  - DOMAIN-SUFFIX,4770113.xyz,直连
-  - DOMAIN-SUFFIX,njxyj.cn,直连
-  - DOMAIN-SUFFIX,erp321.com,直连
   - RULE-SET,private_domain,直连
-  - RULE-SET,directlite,直连
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 默认代理
   - RULE-SET,ai,🤖 ChatGPT
@@ -263,17 +232,14 @@ rules:
   - MATCH,🐟 漏网之鱼
 
 # 规则集
-# 锚点
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
-# 规则集列表
 rule-providers: 
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  directlite: { <<: *class, url: "https://raw.githubusercontent.com/whg112/rule/refs/heads/main/direct.list"}
-  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/whg112/rule/refs/heads/main/proxy.list"}
-  ai: { <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" }
+  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list"}
+  ai: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
