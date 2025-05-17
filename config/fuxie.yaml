@@ -112,6 +112,13 @@ dns:
     - "+.ntp1.aliyun.com"
     - "+.ntp.ntsc.ac.cn"
     - "+.cn.ntp.org.cn"
+    - ".aliyuncs.com"
+    - "+.221636.xyz"
+    - "+.wanghglc.top"
+    - "+.4770113.xyz"
+    - "+.moeyy.xyz"
+    - "+.njxyj.cn"
+    - "+.erp321.com"
   # 默认DNS服务器，帮助下面域名的DNS服务器做域名解析，不能使用域名的DNS服务器
   default-nameserver:
     - 223.5.5.5
