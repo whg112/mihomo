@@ -1,6 +1,6 @@
 # 节点信息
 proxies:
-  - {name: 直连, type: direct}
+  - {name: 直连, type: direct, udp: true}
   - {name: 拒绝, type: reject}
 
 # 全局配置 
