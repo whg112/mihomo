@@ -378,7 +378,7 @@ dns:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, ♻️ 所有自动, 🌐 手动切换, 直连, 拒绝]}
+pr: &pr {type: select, proxies: [🚀 默认代理, ♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🌐 手动切换, 直连, 拒绝]}
 proxy-groups:
   # 代理链，目前 relay 可以支持 udp 的只有 vmess/vless/trojan/ss/ssr/tuic
   # wireguard 目前不支持在 relay 中使用，请使用 proxy 中的 dialer-proxy 配置项
@@ -389,14 +389,15 @@ proxy-groups:
   # select 手动选择，用户自行选择节点
 
   - {name: 🚀 默认代理, type: select, proxies: [♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🌐 手动切换, 直连, 拒绝]}
+  - {name: 🤖 AI, <<: *pr}
+  - {name: 👨🏿‍💻 GitHub, <<: *pr}
   - {name: 📹 YouTube, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
-  - {name: 🤖 ChatGPT, <<: *pr}
-  - {name: 👨🏿‍💻 GitHub, <<: *pr}
   - {name: 🐬 OneDrive, <<: *pr}
   - {name: 🪟 Microsoft, <<: *pr}
   - {name: 🎵 TikTok, <<: *pr}
   - {name: 📲 Telegram, <<: *pr}
+  - {name: 📺 Disney, <<: *pr}
   # - {name: 🎥 NETFLIX, <<: *pr}
   - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 加坡自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 美国自动, ♻️ 香港自动, 🎥 奈飞自动, 🚀 默认代理, 🎥 奈飞手动, 🌐 手动切换, 拒绝]}
   # - {name: ✈️ Speedtest, <<: *pr}
@@ -421,6 +422,7 @@ proxy-groups:
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
 rules:
   # 指定域名使用的代理组
+  - DOMAIN-SUFFIX,local,🎯 直连
   - DOMAIN-SUFFIX,221636.xyz,🎯 直连
   - DOMAIN-SUFFIX,wanghglc.top,🎯 直连
   - DOMAIN-SUFFIX,4770113.xyz,🎯 直连
@@ -428,11 +430,22 @@ rules:
   - DOMAIN-SUFFIX,erp321.com,🎯 直连
   - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
   # 指定内外IP使用的代理组
+  - IP-CIDR,192.168.0.0/16,🎯 直连,no-resolve
+  - IP-CIDR,10.0.0.0/8,🎯 直连,no-resolve
+  - IP-CIDR,172.16.0.0/12,🎯 直连,no-resolve
+  - IP-CIDR,127.0.0.0/8,🎯 直连,no-resolve
+  - IP-CIDR,100.64.0.0/10,🎯 直连,no-resolve
+  - IP-CIDR6,::1/128,🎯 直连,no-resolve
+  - IP-CIDR6,fc00::/7,🎯 直连,no-resolve
+  - IP-CIDR6,fe80::/10,🎯 直连,no-resolve
+  - IP-CIDR6,fd00::/8,🎯 直连,no-resolve
   # - SRC-IP-CIDR,192.168.10.10/32,🎯 直连
+  - RULE-SET,Direct_Domain,直连
   - RULE-SET,private_domain,直连
+  - RULE-SET,private_ip,直连
+  - RULE-SET,Proxy_Domain,🚀 默认代理
+  - RULE-SET,ai,🤖 AI
   - RULE-SET,apple_domain,🍎 Apple
-  - RULE-SET,proxylite,🚀 默认代理
-  - RULE-SET,ai,🤖 ChatGPT
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,google_domain,🍀 Google
@@ -442,6 +455,7 @@ rules:
   - RULE-SET,speedtest_domain,✈️ Speedtest
   - RULE-SET,telegram_domain,📲 Telegram
   - RULE-SET,netflix_domain,🎥 NETFLIX
+  - RULE-SET,Disney_domain,📺 Disney
   - RULE-SET,paypal_domain,💶 PayPal
   - RULE-SET,gfw_domain,🚀 默认代理
   - RULE-SET,geolocation-!cn,🚀 默认代理
@@ -458,14 +472,16 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
+  Direct_Domain: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/Direct.list"}
+  Proxy_Domain: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/Proxy.list"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  proxylite: { <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/Proxy.list"}
   ai: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
   telegram_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"}
   netflix_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"}
+  Disney_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/disney.mrs"}
   paypal_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/paypal.mrs"}
   onedrive_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/onedrive.mrs"}
   microsoft_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"}
@@ -480,3 +496,4 @@ rule-providers:
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
+  private_ip: { <<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs"}
