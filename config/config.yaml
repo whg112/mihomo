@@ -399,7 +399,7 @@ proxy-groups:
   - {name: 📲 Telegram, <<: *pr}
   - {name: 📺 Disney, <<: *pr}
   # - {name: 🎥 NETFLIX, <<: *pr}
-  - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 加坡自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 美国自动, ♻️ 香港自动, 🎥 奈飞自动, 🚀 默认代理, 🎥 奈飞手动, 🌐 手动切换, 拒绝]}
+  - {name: 🎥 NETFLIX, type: select, proxies: [♻️ 加坡自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 韩国自动, ♻️ 美国自动, ♻️ 香港自动, 🚀 默认代理, 🌐 手动切换, 拒绝]}
   # - {name: ✈️ Speedtest, <<: *pr}
   - {name: ✈️ Speedtest, type: select, proxies: [🎯 直连, 🚀 默认代理, ♻️ 所有自动, ♻️ 香港自动, ♻️ 台湾自动, ♻️ 日本自动, ♻️ 加坡自动, ♻️ 韩国自动, ♻️ 美国自动, 🌐 手动切换, 拒绝]}
   - {name: 💶 PayPal, <<: *pr}
@@ -415,8 +415,8 @@ proxy-groups:
   - {name: ♻️ 加坡自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广新|新加坡|坡|狮城|SG|🇸🇬|Singapore))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 韩国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广韩|韩国|韓國|KR|首尔|春川|🇰🇷|Korea))^((?!(家宽|游戏|剩余|流量|0.5|0.5倍|0.5x|2.0|2倍|2x|3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x)).)*$"}
   - {name: ♻️ 美国自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(广美|美|纽约|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|🇺🇸|United States))^((?!(游戏|剩余|流量|0.5|0.5倍|0.5x|10.0|10倍|10x|20.0|20倍|20x)).)*$"}
-  - {name: 🎥 奈飞自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(NF|奈飞|解锁|Netflix|NETFLIX|Media))"}
-  - {name: 🎥 奈飞手动, type: select, include-all: true, filter: "(?i)(?=.*(NF|奈飞|解锁|Netflix|NETFLIX|Media))"}
+  # - {name: 🎥 奈飞自动, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(?i)(?=.*(NF|奈飞|解锁|Netflix|NETFLIX|Media))"}
+  # - {name: 🎥 奈飞手动, type: select, include-all: true, filter: "(?i)(?=.*(NF|奈飞|解锁|Netflix|NETFLIX|Media))"}
 
 # 规则匹配
 # 此规则部分没有做防泄露处理，因为弊严重大于利！
@@ -430,39 +430,39 @@ rules:
   - DOMAIN-SUFFIX,erp321.com,🎯 直连
   - DOMAIN-SUFFIX,qichiyu.com,🚀 默认代理
   # 指定内外IP使用的代理组
-  - IP-CIDR,192.168.0.0/16,🎯 直连,no-resolve
-  - IP-CIDR,10.0.0.0/8,🎯 直连,no-resolve
-  - IP-CIDR,172.16.0.0/12,🎯 直连,no-resolve
-  - IP-CIDR,127.0.0.0/8,🎯 直连,no-resolve
-  - IP-CIDR,100.64.0.0/10,🎯 直连,no-resolve
-  - IP-CIDR6,::1/128,🎯 直连,no-resolve
-  - IP-CIDR6,fc00::/7,🎯 直连,no-resolve
-  - IP-CIDR6,fe80::/10,🎯 直连,no-resolve
-  - IP-CIDR6,fd00::/8,🎯 直连,no-resolve
+  - IP-CIDR,192.168.0.0/16,🎯 直连
+  - IP-CIDR,10.0.0.0/8,🎯 直连
+  - IP-CIDR,172.16.0.0/12,🎯 直连
+  - IP-CIDR,127.0.0.0/8,🎯 直连
+  - IP-CIDR,100.64.0.0/10,🎯 直连
+  - IP-CIDR6,::1/128,🎯 直连
+  - IP-CIDR6,fc00::/7,🎯 直连
+  - IP-CIDR6,fe80::/10,🎯 直连
+  - IP-CIDR6,fd00::/8,🎯 直连
   # - SRC-IP-CIDR,192.168.10.10/32,🎯 直连
   - RULE-SET,Direct_Domain,直连
   - RULE-SET,private_domain,直连
   - RULE-SET,private_ip,直连
   - RULE-SET,Proxy_Domain,🚀 默认代理
   - RULE-SET,ai,🤖 AI
-  - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,github_domain,👨🏿‍💻 GitHub
   - RULE-SET,youtube_domain,📹 YouTube
   - RULE-SET,google_domain,🍀 Google
+  - RULE-SET,google_ip,🍀 Google,no-resolve
   - RULE-SET,onedrive_domain,🐬 OneDrive
   - RULE-SET,microsoft_domain,🪟 Microsoft
   - RULE-SET,tiktok_domain,🎵 TikTok
-  - RULE-SET,speedtest_domain,✈️ Speedtest
   - RULE-SET,telegram_domain,📲 Telegram
+  - RULE-SET,telegram_ip,📲 Telegram,no-resolve
   - RULE-SET,netflix_domain,🎥 NETFLIX
+  - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
   - RULE-SET,Disney_domain,📺 Disney
   - RULE-SET,paypal_domain,💶 PayPal
   - RULE-SET,gfw_domain,🚀 默认代理
   - RULE-SET,geolocation-!cn,🚀 默认代理
+  - RULE-SET,apple_domain,🍎 Apple
+  - RULE-SET,speedtest_domain,✈️ Speedtest
   - RULE-SET,cn_domain,🎯 直连
-  - RULE-SET,google_ip,🍀 Google,no-resolve
-  - RULE-SET,netflix_ip,🎥 NETFLIX,no-resolve
-  - RULE-SET,telegram_ip,📲 Telegram,no-resolve
   - RULE-SET,cn_ip,🎯 直连
   - MATCH,🐟 漏网之鱼
 
@@ -475,7 +475,7 @@ rule-providers:
   Direct_Domain: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/Direct.list"}
   Proxy_Domain: {<<: *class, url: "https://github.moeyy.xyz/https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/Proxy.list"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
-  ai: {  <<: *domain, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" }
+  ai: {  <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/meta/geo/geosite/category-ai-!cn.mrs" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
   google_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"}
   github_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"}
@@ -496,4 +496,4 @@ rule-providers:
   google_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/google.mrs"}
   telegram_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs"}
   netflix_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/netflix.mrs"}
-  private_ip: { <<: *ip, url: "https://github.com/MetaCubeX/meta-rules-dat/raw/refs/heads/meta/geo/geoip/private.mrs"}
+  private_ip: { <<: *ip, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"}
