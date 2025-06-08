@@ -399,6 +399,7 @@ proxy-groups:
   - {name: 💁 WhatsApp, <<: *pr}
   - {name: 🗣️ Facebook, <<: *pr}
   - {name: 📹 YouTube, <<: *pr}
+  - {name: 🎵 TikTok, <<: *pr}
   - {name: 📺 Disney, <<: *pr}
   - {name: 🎥 Netflix, <<: *pr}
   - {name: 🎬 HBO, <<: *pr}
