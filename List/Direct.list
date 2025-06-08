@@ -11,10 +11,11 @@ DOMAIN-SUFFIX,sssyun.xyz
 DOMAIN-SUFFIX,qeayr.cn
 DOMAIN-SUFFIX,saojc.xyz   
 DOMAIN-SUFFIX,dler.cloud
-DOMAIN-SUFFIX,0tk8a3a1q4t94dler.com
-DOMAIN-SUFFIX,61read.com
-DOMAIN-SUFFIX,oauth2.61read.com
-DOMAIN-SUFFIX,zhuzhufanli.com
+DOMAIN-SUFFIX,0tk8a3a1q4t94dler.com 
+DOMAIN-SUFFIX,wxda.net
+DOMAIN-SUFFIX,hkmlqxg.xyz
+DOMAIN-SUFFIX,qingtiantv888.xyz
+DOMAIN-SUFFIX,ynhtbank.com
 
 # 快猫    
 DOMAIN-SUFFIX,quickcht3.club
@@ -47,7 +48,6 @@ DOMAIN-SUFFIX,zhunchuanpb.com
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
-DOMAIN-KEYWORD,61read
 
 # IP段匹配
 IP-CIDR,219.146.1.66/32,no-resolve
@@ -63,9 +63,7 @@ IP-CIDR,223.6.6.6/32,no-resolve
 IP-CIDR,180.76.76.76/32,no-resolve
 IP-CIDR,114.114.114.114/32,no-resolve
 IP-CIDR,114.114.115.115/32,no-resolve
-IP-CIDR,58.221.0.33/30,no-resolve
-IP-CIDR,58.221.24.241/28,no-resolve
-IP-CIDR,58.221.250.5/30,no-resolve
+
 
 # 360
 DOMAIN-SUFFIX,360.com
@@ -627,6 +625,7 @@ DOMAIN-SUFFIX,zhimg.com
 DOMAIN-SUFFIX,zhipin.com
 DOMAIN-SUFFIX,zhongsou.com
 DOMAIN-SUFFIX,zhuihd.com
+
 #国内补充
 DOMAIN-SUFFIX,baidu.com
 DOMAIN-SUFFIX,221636.xyz
@@ -636,3 +635,4 @@ DOMAIN-SUFFIX,4770113.xyz
 DOMAIN-SUFFIX,njxyj.cn
 DOMAIN-SUFFIX,erp321.com
 DOMAIN-SUFFIX,yingdao.com
+DOMAIN-SUFFIX,qichiyu.com
