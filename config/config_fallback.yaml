@@ -413,7 +413,6 @@ proxy-groups:
   - {name: 🪙 Crypto, <<: *pr}
   - {name: ✈️ Test, <<: *pr}
   - {name: ⛔ Block, <<: *pr}
-  - {name: 🗺 国外, <<: *pr}
   - {name: 🇨🇳 国内, <<: *pr}
   - {name: 🐟 漏网之鱼, <<: *pr}
 
