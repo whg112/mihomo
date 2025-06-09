@@ -1,0 +1,31 @@
+## 节点选在推荐
+|规则名称|节点名称|
+|---|---|
+|ChatGPT|台湾故转|
+|Claude|美国故转|
+|Meta Al|新加坡故转|
+|Perplexity|香港故转|
+|GitHub|香港自动|
+|Telegram|香港自动|
+|Twitter(X)|香港自动|
+|WhatsApp|台湾故转|
+|Facebook|台湾故转|
+|YouTube|香港自动|
+|TikTok|台湾故转|
+|Disney|台湾故转|
+|Netflix|台湾故转|
+|HBO|台湾故转|
+|Spotify|台湾故转|
+|Amazon|直连|
+|Apple|直连|
+|Microsoft|台湾故转|
+|Google|台湾故转|
+|Nvidia|直连|
+|Steam|直连|
+|Game|直连|
+|Crypto|台湾故转|
+|Test|香港故转|
+|Block|拒绝|
+|国外|香港自动|
+|国内|直连|
+|漏网之鱼|香港自动|
