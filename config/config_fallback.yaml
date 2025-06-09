@@ -9,7 +9,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204 # 自动测延迟地址
       interval: 300 # 自动测延迟间隔时间（秒）300为5分钟
-    proxy: 直连 # 拉去机场订阅使用的代理节点名称“DIRECT”为直连
+    proxy: DIRECT # 拉去机场订阅使用的代理节点名称“DIRECT”为直连
     # header: # 拉取订阅请求头
     #   User-Agent: # UA一般使用"Clash.meta"
     #   - "Clash"
