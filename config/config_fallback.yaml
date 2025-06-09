@@ -378,7 +378,7 @@ dns:
  
 # 出站策略
 # 注意锚点必须放在引用的上方，可以集中把锚点全部放yaml的顶部。
-pr: &pr {type: select, proxies: [🗺 国外, 🇭🇰 香港手自故转, 🇹🇼 台湾手自故转, 🇯🇵 日本手自故转, 🇸🇬 新加坡手自故转, 🇰🇷 韩国手自故转, 🇺🇲 美国手自故转, 🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇸🇬 新加坡自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇭🇰 香港故转, 🇹🇼 台湾故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🇰🇷 韩国故转, 🇺🇲 美国故转, 🌐 所有手自故转, 🌐 所有故转, 🌐 所有自动, 🌐 手动切换, 🎯 直连, 🛑 拒绝]}
+pr: &pr {type: select, proxies: [🚀 默认代理, 🇭🇰 香港手自故转, 🇹🇼 台湾手自故转, 🇯🇵 日本手自故转, 🇸🇬 新加坡手自故转, 🇰🇷 韩国手自故转, 🇺🇲 美国手自故转, 🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇸🇬 新加坡自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇭🇰 香港故转, 🇹🇼 台湾故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🇰🇷 韩国故转, 🇺🇲 美国故转, 🌐 所有手自故转, 🌐 所有故转, 🌐 所有自动, 🌐 手动切换, 🎯 直连, 🛑 拒绝]}
 proxy-groups:
   # 代理链，目前 relay 可以支持 udp 的只有 vmess/vless/trojan/ss/ssr/tuic
   # wireguard 目前不支持在 relay 中使用，请使用 proxy 中的 dialer-proxy 配置项
@@ -388,7 +388,7 @@ proxy-groups:
   # load-balance 负载均衡，将按照算法随机选择节点，# strategy: consistent-hashing # 可选 round-robin 和 sticky-sessions
   # select 手动选择，用户自行选择节点
 
-  - {name: 🗺 国外, type: select, proxies: [🇭🇰 香港手自故转, 🇹🇼 台湾手自故转, 🇯🇵 日本手自故转, 🇸🇬 新加坡手自故转, 🇰🇷 韩国手自故转, 🇺🇲 美国手自故转, 🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇸🇬 新加坡自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇭🇰 香港故转, 🇹🇼 台湾故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🇰🇷 韩国故转, 🇺🇲 美国故转, 🌐 所有手自故转, 🌐 所有故转, 🌐 所有自动, 🌐 手动切换, 🎯 直连, 🛑 拒绝]}
+  - {name: 🚀 默认代理, type: select, proxies: [🇭🇰 香港手自故转, 🇹🇼 台湾手自故转, 🇯🇵 日本手自故转, 🇸🇬 新加坡手自故转, 🇰🇷 韩国手自故转, 🇺🇲 美国手自故转, 🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇸🇬 新加坡自动, 🇰🇷 韩国自动, 🇺🇲 美国自动, 🇭🇰 香港故转, 🇹🇼 台湾故转, 🇯🇵 日本故转, 🇸🇬 新加坡故转, 🇰🇷 韩国故转, 🇺🇲 美国故转, 🌐 所有手自故转, 🌐 所有故转, 🌐 所有自动, 🌐 手动切换, 🎯 直连, 🛑 拒绝]}
   - {name: 🤖 ChatGPT, <<: *pr}
   - {name: ✨ Claude, <<: *pr}
   - {name: ✨ Meta AI, <<: *pr}
@@ -404,17 +404,18 @@ proxy-groups:
   - {name: 🎥 Netflix, <<: *pr}
   - {name: 🎬 HBO, <<: *pr}
   - {name: 🎵 Spotify, <<: *pr}
-  - {name: 🌳 Amazon, <<: *pr}
-  - {name: 🍎 Apple, <<: *pr}
+  - {name: 🌳 Amazon, type: select, proxies: [🎯 直连, 🚀 默认代理, 🛑 拒绝]}
+  - {name: 🍎 Apple, type: select, proxies: [🎯 直连, 🚀 默认代理, 🛑 拒绝]}
   - {name: 🪟 Microsoft, <<: *pr}
   - {name: 🍀 Google, <<: *pr}
-  - {name: 💻 Nvidia, <<: *pr}
-  - {name: 🎮 Steam, <<: *pr}
-  - {name: 🕹️ Game, <<: *pr}
+  - {name: 💻 Nvidia, type: select, proxies: [🎯 直连, 🚀 默认代理, 🛑 拒绝]}
+  - {name: 🎮 Steam, type: select, proxies: [🎯 直连, 🚀 默认代理, 🛑 拒绝]}
+  - {name: 🕹️ Game, type: select, proxies: [🎯 直连, 🚀 默认代理, 🛑 拒绝]}
   - {name: 🪙 Crypto, <<: *pr}
   - {name: ✈️ Test, <<: *pr}
-  - {name: ⛔ Block, <<: *pr}
-  - {name: 🇨🇳 国内, <<: *pr}
+  - {name: ⛔ Block, type: select, proxies: [🛑 拒绝, 🚀 默认代理, 🎯 直连]}
+  - {name: 🗺 国外, <<: *pr}
+  - {name: 🇨🇳 国内, type: select, proxies: [🎯 直连, 🚀 默认代理, 🛑 拒绝]}
   - {name: 🐟 漏网之鱼, <<: *pr}
 
   - {name: 🌐 所有手自故转, type: fallback, include-all: true, lazy: false, tolerance: 20, interval: 300, proxies: [🌐 所有手动, 🌐 所有自动]}
