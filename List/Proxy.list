@@ -1,3 +1,5 @@
+# 代理补充列表
+
 # IP段匹配
 IP-CIDR,142.171.133.131/32,no-resolve
 IP-CIDR,103.115.43.2/32,no-resolve
@@ -148,5 +150,5 @@ IP-CIDR,208.67.222.222/32,no-resolve
 IP-CIDR,208.67.220.220/32,no-resolve
 IP-CIDR,142.250.0.0/16,no-resolve
 
-# 域名后缀匹配
-DOMAIN-SUFFIX,qichiyu.com
+# 域名关键字匹配
+DOMAIN-KEYWORD,1e100
