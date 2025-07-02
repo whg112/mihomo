@@ -10,6 +10,9 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204 # 自动测延迟地址
       interval: 300 # 自动测延迟间隔时间（秒）300为5分钟
     proxy: DIRECT # 拉去机场订阅使用的代理节点名称“DIRECT”为直连
+    # override:
+      # additional-prefix: "前缀 |"
+      # additional-suffix: "| 后缀"
     # header: # 拉取订阅请求头
     #   User-Agent: # UA一般使用"Clash.meta"
     #   - "Clash"
@@ -29,6 +32,9 @@ proxy-providers:
   #     url: https://www.gstatic.com/generate_204
   #     interval: 300
   #   proxy: 🚀 默认代理
+  #   override:
+  #     additional-prefix: "前缀 |"
+  #     additional-suffix: "| 后缀"
 # global-ua: clash.meta # 全局UA
 
 # 节点信息
