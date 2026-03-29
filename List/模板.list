@@ -1,0 +1,8 @@
+# 域名后缀匹配
+DOMAIN-SUFFIX,qichiyu.com
+
+# 域名关键字匹配
+DOMAIN-KEYWORD,1e100
+
+# IP地址匹配
+# IP-CIDR,8.8.8.8/32,no-resolve
