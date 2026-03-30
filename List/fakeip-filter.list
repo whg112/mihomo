@@ -1,0 +1,18 @@
+# 内网/本地域名（必须走真实IP）
+# +.local
+# +.lan
+# +.home
+# +.internal
+# +.localhost
+
+# 路由器/NAS
+# +.miwifi.com
+# +.tplinkwifi.net
+# +.tp-link.com
+# +.asus.com
+# +.synology.com
+# +.qnap.com
+# +.wdc.com
+
+# 自定义真实IP的场景
++.221636.xyz
