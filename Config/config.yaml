@@ -81,6 +81,7 @@ dns:
   fake-ip-filter-mode: blacklist
   fake-ip-filter:
     - "rule-set:fakeipfilter_domain"
+    - "rule-set:fakeipfilter_class"
   default-nameserver:
     - https://223.5.5.5/dns-query
   proxy-server-nameserver:
@@ -156,6 +157,7 @@ rule-anchor:
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
   fakeipfilter_domain: {<<: *domain, url: "https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/fakeip-filter.mrs"}
+  fakeipfilter_class: {<<: *class, url: "https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/List/fakeip-filter.list"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   proxylite: { <<: *class, url: "https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/List/proxy.list"}
   directlist: { <<: *class, url: "https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/List/direct.list"}
