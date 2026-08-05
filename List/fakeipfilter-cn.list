@@ -115,3 +115,8 @@ stun.*.cn
 stun.*.*.cn
 #Steam 国内 CDN
 alibaba.cdn.steampipe.steamcontent.com
+#自定义
+*.erp321.com
+*.njxyj.cn
+*.wanghglc.top
+*.221636.xyz
