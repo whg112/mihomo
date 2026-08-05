@@ -185,8 +185,8 @@ rule-anchor:
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
-  fakeipfilter-cn_class: {<<: *class, url: "https://raw.githubusercontent.com/whg112/rule/refs/heads/main/rules/fakeipfilter-cn.list"}
-  fakeipfilter-!cn_class: {<<: *class, url: "https://raw.githubusercontent.com/whg112/rule/refs/heads/main/rules/fakeipfilter-!cn.list"}
+  fakeipfilter-cn_class: {<<: *class, url: "https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/List/fakeipfilter-cn.list"}
+  fakeipfilter-!cn_class: {<<: *class, url: "https://raw.githubusercontent.com/whg112/mihomo/refs/heads/main/List/fakeipfilter-!cn.list"}
   private_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   ai: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ai-!cn.mrs" }
   youtube_domain: { <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"}
