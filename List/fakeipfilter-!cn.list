@@ -1,80 +1,71 @@
-#连通性探测 / 工具
-cable.auth.com
-network-test.debian.org
-detectportal.firefox.com
-resolver1.opendns.com
-global.turn.twilio.com
-global.stun.twilio.com
-injections.adguard.org
-local.adguard.org
-proxy.golang.org
-shark007.net
-#NTP
-time-ios.apple.com
-+.pool.ntp.org
-time.*.com
-time.*.gov
-time.*.apple.com
-time1.*.com
-time2.*.com
-time3.*.com
-time4.*.com
-time5.*.com
-time6.*.com
-time7.*.com
-ntp.*.com
-ntp1.*.com
-ntp2.*.com
-ntp3.*.com
-ntp4.*.com
-ntp5.*.com
-ntp6.*.com
-ntp7.*.com
-#STUN
-+.stun.*.*
-+.stun.*.*.*
-+.stun.*.*.*.*
-+.stun.*.*.*.*.*
-stun.*.*
-stun.*.*.*
-#JOOX 音乐
-api-jooxtt.sanook.com
-api.joox.com
-joox.com
-#Win10 本地连接检测
-+.msftconnecttest.com
-+.msftncsi.com
-#Nintendo Switch
-+.srv.nintendo.net
-+.cdn.nintendo.net
-*.n.n.srv.nintendo.net
-#Sony PlayStation
-+.stun.playstation.net
-#Microsoft Xbox
-xnotify.xboxlive.com
-xbox.*.*.microsoft.com
-*.*.xboxlive.com
-xbox.*.microsoft.com
-#Wotgame
-+.battle.net
-+.wargaming.net
-#Steam
-+.steamcontent.com
-#FinalFantasy XIV 国际服
-*.square-enix.com
-*.finalfantasyxiv.com
-*.ffxiv.com
-#Linksys Router
-heartbeat.belkin.com
-*.linksys.com
-*.linksyssmartwifi.com
-#Google
-lens.l.google.com
-stun.l.google.com
-na.b.g-tun.com
-#Netflix
-+.nflxvideo.net
-#Disney Plus
-+.media.dssott.com
-#Wifi Calling
-+.pub.3gppnetwork.org
+# ========== 连通性探测 / 工具 ==========
+DOMAIN,cable.auth.com
+DOMAIN,network-test.debian.org
+DOMAIN,detectportal.firefox.com
+DOMAIN,resolver1.opendns.com
+DOMAIN,global.turn.twilio.com
+DOMAIN,global.stun.twilio.com
+DOMAIN,injections.adguard.org
+DOMAIN,local.adguard.org
+DOMAIN,proxy.golang.org
+DOMAIN,shark007.net
+
+# ========== NTP（用关键词覆盖所有 time/ntp 通配符条目） ==========
+DOMAIN,time-ios.apple.com
+DOMAIN-SUFFIX,pool.ntp.org
+DOMAIN-KEYWORD,time
+DOMAIN-KEYWORD,ntp
+
+# ========== STUN（用关键词覆盖所有 stun.*.* 通配） ==========
+DOMAIN-KEYWORD,stun
+
+# ========== JOOX 音乐 ==========
+DOMAIN,api-jooxtt.sanook.com
+DOMAIN,api.joox.com
+DOMAIN,joox.com
+
+# ========== Win10 本地连接检测 ==========
+DOMAIN-SUFFIX,msftconnecttest.com
+DOMAIN-SUFFIX,msftncsi.com
+
+# ========== Nintendo Switch ==========
+DOMAIN-SUFFIX,nintendo.net
+
+# ========== Sony PlayStation ==========
+DOMAIN-SUFFIX,playstation.net
+
+# ========== Microsoft Xbox ==========
+DOMAIN,xnotify.xboxlive.com
+DOMAIN-SUFFIX,microsoft.com
+DOMAIN-SUFFIX,xboxlive.com
+
+# ========== Wotgame（战网/坦克世界） ==========
+DOMAIN-SUFFIX,battle.net
+DOMAIN-SUFFIX,wargaming.net
+
+# ========== Steam ==========
+DOMAIN-SUFFIX,steamcontent.com
+
+# ========== FinalFantasy XIV 国际服 ==========
+DOMAIN-SUFFIX,square-enix.com
+DOMAIN-SUFFIX,finalfantasyxiv.com
+DOMAIN-SUFFIX,ffxiv.com
+
+# ========== Linksys Router ==========
+DOMAIN,heartbeat.belkin.com
+DOMAIN-SUFFIX,linksys.com
+DOMAIN-SUFFIX,linksyssmartwifi.com
+
+# ========== Google ==========
+DOMAIN,lens.l.google.com
+DOMAIN,stun.l.google.com
+DOMAIN,na.b.g-tun.com
+
+# ========== Netflix ==========
+DOMAIN-SUFFIX,nflxvideo.net
+
+# ========== Disney Plus ==========
+DOMAIN-SUFFIX,dssott.com
+
+# ========== Wifi Calling ==========
+DOMAIN-SUFFIX,3gppnetwork.org
